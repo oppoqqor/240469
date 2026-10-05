@@ -16,6 +16,8 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      themeMode: dark ? ThemeMode.dark : ThemeMode.light,
+      darkTheme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(title: const Text('Settings')),
         body: Column(
@@ -29,6 +31,10 @@ class _AppState extends State<App> {
               title: const Text('Agree to Terms'),
               value: terms,
               onChanged: (v) => setState(() => terms = v ?? false),
+            ),
+            ElevatedButton(
+              onPressed: terms ? () {} : null,
+              child: const Text('Continue'),
             ),
           ],
         ),
