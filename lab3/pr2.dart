@@ -11,49 +11,49 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   bool obscure = true;
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    
-      final customTextStyle = TextStyle(
-      fontFamily: 'YourFontName',
-      color: Colors.blue,
-      fontSize: 16.0,
-    );
-    
     return MaterialApp(
-        
       home: Scaffold(
         appBar: AppBar(title: const Text('Login')),
         body: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              
-               Text('Dark Mode', style: customTextStyle), 
-              Text('Notifications', style: customTextStyle.copyWith(fontSize: 20.0)),
-              
-              TextFormField(
-                decoration: const InputDecoration(labelText: 'Username'),
-              ),
-              TextFormField(
-                obscureText: obscure,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      obscure ? Icons.visibility : Icons.visibility_off,
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: const InputDecoration(labelText: 'Email'),
+                  validator: (v) {
+                    if (v == null || !v.contains('@')) {
+                      return 'Enter a valid email';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  obscureText: obscure,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        obscure ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () => setState(() => obscure = !obscure),
                     ),
-                    onPressed: () => setState(() => obscure = !obscure),
                   ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('Login'),
-              ),
-            ],
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {}
+                  },
+                  child: const Text('Login'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
