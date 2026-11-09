@@ -1,5 +1,5 @@
 name: cart
-description: Lab 9 Cart (Pass version)
+description: Lab 9 Cart (Full version)
 publish_to: 'none'
 version: 0.1.0
 
@@ -12,6 +12,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   flutter_bloc: ^9.0.0
   bloc: ^9.0.0
+  bloc_concurrency: ^0.3.0
 
 dev_dependencies:
   flutter_test:
