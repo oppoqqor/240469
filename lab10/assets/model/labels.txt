@@ -1,0 +1,6 @@
+0 cat
+1 hiding person
+2 notebook
+3 keyboard
+4 Davron
+5 nothing
