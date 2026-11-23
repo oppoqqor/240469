@@ -1,13 +1,18 @@
 # Lab 11 Notes
 
-## Part 1 — Setup
+## Part 1
 
-1. **Field types in `test/fixtures/product.json`:**
-   - Number: `price` (`9.99`, also `weight`: `4`, `id`: `1`, `rating`: `2.56`)
-   - List of strings: `tags` (`["beauty", "mascara"]`, also `images`)
-   - Nested object: `dimensions` (`{"width": 15.14, "height": 13.08, "depth": 22.99}`, also `meta`)
-   - List of objects: `reviews` (list of review maps with `rating`, `comment`, `date`, `reviewerName`, `reviewerEmail`)
+1. From product.json:
+   - number: price (9.99)
+   - list of strings: tags (["beauty", "mascara"])
+   - nested object: dimensions
+   - list of objects: reviews
 
-2. **`/products/0` response:**
-   - Status code: `404`
-   - Body: `{"message":"Product with id '0' not found"}`
+2. /products/0 returns status 404 and body:
+   {"message":"Product with id '0' not found"}
+
+## Part 2
+
+1. If the server sends 10, jsonDecode makes it an int. Doing json['price'] as double crashes at runtime with a TypeError (not compile time because the map values are dynamic).
+
+2. Testing with a saved file works offline, runs way faster, and doesn't break if the API goes down or changes the data.
